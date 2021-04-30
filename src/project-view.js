@@ -248,7 +248,12 @@ const openOnWorkspace = async function _openOnWorkspace (reverseOption) {
       if (!wc.browserWindowOptions) { return; }
       wc.webContents.send(
         'pv-check-if-opened',
-        model, wc.getTitle(),
+        {
+          paths: model.paths,
+          devMode: model.devMode,
+          uuid: model.uuid
+        },
+        wc.getTitle(),
         action
       );
     });
